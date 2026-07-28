@@ -21,8 +21,8 @@ labels = ['Metropolis', 'Wolff', r'Critical Temperature $T_c$']
 
 outfile = "results/"
 
-datafile1 = "export/metropolis_T.txt"
-datafile2 = "export/wolff_T.txt"
+datafile1 = "results/metropolis_T.txt"
+datafile2 = "results/wolff_T.txt"
 data1 = np.loadtxt(datafile1)
 data2 = np.loadtxt(datafile2)
 
@@ -37,6 +37,7 @@ ax.scatter(T2, M2, color=colors[3], s=20, label=labels[1], marker="s")
 ax.axvline(x=2.269, linestyle='--', color="gray", label=labels[2])
 ax.set_xlabel('Temperature [$T$]')
 ax.set_ylabel(r'Magnetization Per Spin $\left[\frac{|M|}{L^2}\right]$')
+#ax.set_ylabel(r'Specific Heat Capacity [$C_v(T)$]')
 ax.grid(True, which='major', linestyle='--', linewidth=0.5, alpha=0.5)
 ax.legend(frameon=False, loc='best')
 ax.minorticks_on()
