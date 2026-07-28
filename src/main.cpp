@@ -11,28 +11,29 @@ int main() {
     double kT = 2.269;
 
     // Number of warmup sweeps
-    int Nwarmup = 5000;
+    int Nwarmup = 1000;
 
     // Number of measurable sweeps
     int Nmcs = 200;
 
     // Number of measurements
-    int Nmeas = 200;
-
+    int Nmeas = 20;
+    
     // Create object
     IsingModel model(L, kT);
 
-    // Toggle to include warmup during export
+    // Export toggle
+    model.Export = true;
     model.ExportWarmup = false;
 
     // Initialize lattice
     model.Initialize();
 
     // Run Metropolis algorithm
-    //model.Metropolis(Nwarmup, Nmcs, Nmeas);
+    model.Metropolis(Nwarmup, Nmcs, Nmeas);
 
     // Run Wolff algorithm
-    model.Wolff(Nwarmup, Nmcs, Nmeas);
+    //model.Wolff(Nwarmup, Nmcs, Nmeas);
 
     // Print quantities
     model.PrintQuantities();

@@ -33,6 +33,7 @@ class IsingModel {
         double averageM = 0.0;
         double averageE2 = 0.0;
         double averageM2 = 0.0;
+        
 
         // Algorithm helper functions
         void MetropolisUpdate(int i, int j);
@@ -43,6 +44,9 @@ class IsingModel {
         int frame = 0;
 
     public:
+
+        // Export toggle
+        bool Export = false;
 
         // Export warmup data toggle
         bool ExportWarmup = false;

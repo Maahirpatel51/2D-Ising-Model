@@ -95,7 +95,7 @@ void IsingModel::Metropolis(int Nwarmup, int Nmcs, int Nmeas) {
         
         MetropolisUpdate(i, j);
 
-        if (ExportWarmup) {
+        if (ExportWarmup && Export) {
             if (n % MeasureEvery == 0) {
                 SaveFrame();
             }
@@ -118,7 +118,9 @@ void IsingModel::Metropolis(int Nwarmup, int Nmcs, int Nmeas) {
             M.push_back(currentM);
             M2.push_back(currentM * currentM);
 
-            SaveFrame();
+            if (Export) {
+                SaveFrame();
+            }
         }
     }
 
@@ -222,7 +224,7 @@ void IsingModel::Wolff(int Nwarmup, int Nmcs, int Nmeas) {
         currentE = Energy();
         currentM = Magnetization();
 
-        if (ExportWarmup) {
+        if (ExportWarmup && Export) {
             if (n % MeasureEvery == 0) {
                 SaveFrame();
             }
@@ -243,7 +245,9 @@ void IsingModel::Wolff(int Nwarmup, int Nmcs, int Nmeas) {
             M.push_back(currentM);
             M2.push_back(currentM * currentM);
 
-            SaveFrame();
+            if (Export) {
+                SaveFrame();
+            }
         }
     }
 
@@ -306,7 +310,7 @@ void IsingModel::SaveFrame() {
     }
 
     frame++;
-    
+
 }
 
 // Display lattice in terminal
@@ -335,7 +339,7 @@ void IsingModel::PrintQuantities() const {
     std::cout << "<|M|>/N = " << averageM / (L * L) << std::endl;
     std::cout << "<|M^2|>/N = " << averageM2 / (L * L) << std::endl;
 
-    double Cv = (averageE2  - averageE * averageE) / (L * L * kT * kT);
+    double Cv = (averageE2 - averageE * averageE) / (L * L * kT * kT);
     std::cout << "Heat Capacity (C_v) = " << Cv << std::endl;
 
 
