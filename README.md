@@ -26,7 +26,11 @@ A C++ implementation of the two-dimensional Ising model using both the Metropoli
 ## Physics Background
 The 2D Ising model is a classic statistical model used to simulate phase transitions and ferromagnetism in magnetic materials. The system consists of a discrete $L \times L$ lattice with a spin variable, $\sigma_k \in \{-1,+1\}$, assigned to each lattice site, $s_k$.
 
-In the abscence of an external magnetic field, the system's energy is described by the Hamiltonian function $H(\sigma)=-J\sum\limits_{\langle i,j \rangle}s_is_j$.
+In the abscence of an external magnetic field, the system's energy is described by the Hamiltonian function:
+
+$$
+H(\sigma)=-J\sum\limits_{\langle i,j \rangle}s_is_j
+$$
 
 - $J$: Coupling constant. If $J>0$, the system is ferromagnetic and the spins prefer to be aligned.
 - $\langle i,j \rangle$: Represents the sum of nearest-neighbour pairs with periodic boundary conditions.
@@ -55,6 +59,10 @@ The Metropolis-Hasting algorithm is the most commonly used Monte Carlo algorithm
 4. Compute the Metropolis probability, $P_{flip}=$ min $(1, e^{-\frac{\Delta E}{k_B T}})$ and compare it to a uniform random number $r \in U(0,1)$. If the condition $P_{flip}>r$ is satisfied, then flip the spin.
 5. Repeat steps 2-4.
 
+<p align="center">
+    <img src="diagrams/Metropolis_diagram.svg" width="400">
+</p>
+
 The algorithm does not perform well around the critical point $T_c$ as the spins become highly correlated, resulting in single-spin-flip dynamics becoming extremely slow. This phenomenon is referred to as "Critical Slowing Down".
 
 ### Wolff:
@@ -67,19 +75,31 @@ To resolve the effect of critical slowing down around the critical point, non-lo
 5. Repeat steps 3 & 4 until no more spins can be added to the cluster. Then flip the entire cluster simultaneously.
 6. Repeat steps 2-5.
 
+<p align="center">
+    <img src="diagrams/Wolff_diagram.svg" width="400">
+</p>
+
 
 ## Results
 ### Magnetization vs. Temperature
 
 <p align="center">
-    <img src="results/MvsT.png" width="500">
+    <img src="results/MvsT.png" width="400">
 </p>
 
 <p align="center">
 <b>Figure 2.</b> Average absolute magnetization per spin (<i>&lt;|M|&gt;/L²</i>) as a function of temperature for a 100 × 100 two-dimensional Ising lattice simulated using the Metropolis-Hastings and Wolff cluster algorithms. Simulations were performed over the temperature range <i>T</i> = 1.0–4.0 in increments of 0.05. At each temperature, measurements were averaged over 200 Monte Carlo sweeps following an equilibration phase. The close agreement between the two curves confirms that both algorithms sample the same equilibrium distribution.
 </p>
 
-### Heat Capacity vs Temperature
+### Specific Heat Capacity vs Temperature
+
+<p align="center">
+    <img src="results/CvsT.png" width="400">
+</p>
+
+<p align="center">
+<b>Figure 3.</b> Specific Heat Capacity (<i>C<sub>v</i>) as a function of temperature for a 100 × 100 two-dimensional Ising lattice simulated using the Metropolis-Hastings and Wolff cluster algorithms. Simulations were performed over the temperature range <i>T</i> = 1.0–4.0 in increments of 0.05. At each temperature, measurements were averaged over 200 Monte Carlo sweeps following an equilibration phase. The Wolff algorithm peaks around the critical point, demonstrating its advantage over the Metropolis algorithm around in that region.
+</p>
 
 ### Energy or Magnetization convergence
 
@@ -124,7 +144,10 @@ Run
 
 
 ## Future Improvements
-
+- Implement the Swendsen-Wang algorithm
+- Include OpenMP support
+- GPU implementation
+- Implement command line arguements
 
 ## Author
 Maahir Patel
