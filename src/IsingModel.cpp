@@ -94,6 +94,12 @@ void IsingModel::Metropolis(int Nwarmup, int Nmcs, int Nmeas) {
         int j = Random::get_int(0, L - 1);
         
         MetropolisUpdate(i, j);
+
+        if (ExportWarmup) {
+            if (n % MeasureEvery == 0) {
+                SaveFrame();
+            }
+        }
     }
 
     // Perform measurement sweeps
@@ -112,6 +118,7 @@ void IsingModel::Metropolis(int Nwarmup, int Nmcs, int Nmeas) {
             M.push_back(currentM);
             M2.push_back(currentM * currentM);
 
+            SaveFrame();
         }
     }
 
@@ -214,6 +221,12 @@ void IsingModel::Wolff(int Nwarmup, int Nmcs, int Nmeas) {
 
         currentE = Energy();
         currentM = Magnetization();
+
+        if (ExportWarmup) {
+            if (n % MeasureEvery == 0) {
+                SaveFrame();
+            }
+        }
     }
 
     for (int n = 0; n < Nmcs; n++) {
@@ -229,6 +242,8 @@ void IsingModel::Wolff(int Nwarmup, int Nmcs, int Nmeas) {
             E2.push_back(currentE * currentE);
             M.push_back(currentM);
             M2.push_back(currentM * currentM);
+
+            SaveFrame();
         }
     }
 
@@ -276,6 +291,22 @@ int IsingModel::Magnetization() const {
     }
 
     return M;
+}
+
+void IsingModel::SaveFrame() {
+
+    std::ofstream file("../export/frame_" + std::to_string(frame) + ".txt");
+
+    for (int i = 0; i < L; i++) {
+        for (int j = 0; j < L; j++) {
+            file << SpinConfiguration[idx(i, j)] << " ";
+        }
+
+        file << "\n";
+    }
+
+    frame++;
+    
 }
 
 // Display lattice in terminal

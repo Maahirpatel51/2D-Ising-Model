@@ -1,6 +1,7 @@
 #pragma once
 
 #include <iostream>
+#include <fstream>
 #include <vector>
 #include <stack>
 #include <cmath>
@@ -37,7 +38,14 @@ class IsingModel {
         void MetropolisUpdate(int i, int j);
         void WolffUpdate();
 
+        // Save lattice to .txt file
+        void SaveFrame();
+        int frame = 0;
+
     public:
+
+        // Export warmup data toggle
+        bool ExportWarmup = false;
 
         // 2D -> 1D vector indexing function
         inline int idx(int i, int j) const {
