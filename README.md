@@ -10,10 +10,10 @@ A C++ implementation of the two-dimensional Ising model using both the Metropoli
   </tr>
   <tr>
     <td align="center">
-      <img src="results/animations/metropolis_T2p269_AfterWarmup.gif" width="400">
+      <img src="results/animations/metropolis_T2p269_AfterWarmup.gif" width="550">
     </td>
     <td align="center">
-      <img src="results/animations/wolff_T2p269_AfterWarmup.gif" width="400">
+      <img src="results/animations/wolff_T2p269_AfterWarmup.gif" width="550">
     </td>
   </tr>
 </table>
@@ -65,7 +65,7 @@ The Metropolis-Hasting algorithm is the most commonly used Monte Carlo algorithm
 
 The algorithm does not perform well around the critical point $T_c$ as the spins become highly correlated, resulting in single-spin-flip dynamics becoming extremely slow. This phenomenon is referred to as "Critical Slowing Down".
 
-### Wolff:
+### Wolff Cluster:
 To resolve the effect of critical slowing down around the critical point, non-local algorithms, like the Wolff algorithm, are utilized to flip entire clusters of aligned spins. The algorithm is implemented as follows:
 
 1. Initialize spins on a 2D square lattice in a random configuration.
@@ -118,7 +118,7 @@ To resolve the effect of critical slowing down around the critical point, non-lo
 Clone the repository
 
 ```bash
-git clone ...Add
+git clone https://github.com/Maahirpatel51/2D-Ising-Model
 cd IsingModel
 ```
 
@@ -148,6 +148,49 @@ Run
 - Include OpenMP support
 - GPU implementation
 - Implement command line arguements
+
+
+## Simulation Gallery
+The animations below show the evolution of a 100 × 100 Ising lattice. Each frame represents the same number of Monte Carlo sweeps for both algorithms.
+
+<table align="center">
+  <tr>
+    <th width="150">Temperature</th>
+    <th width="350">Metropolis-Hastings</th>
+    <th width="350">Wolff Cluster</th>
+  </tr>
+
+  <tr>
+    <td align="center"><b>T = 1.50</b><br>(Below Tc)</td>
+    <td align="center">
+      <img src="results/animations/metropolis_T1p5.gif" width="320">
+    </td>
+    <td align="center">
+      <img src="results/animations/wolff_T1p5.gif" width="320">
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center"><b>T = 2.269</b><br>(Critical)</td>
+    <td align="center">
+      <img src="results/animations/metropolis_T2p269.gif" width="320">
+    </td>
+    <td align="center">
+      <img src="results/animations/wolff_T2p269.gif" width="320">
+    </td>
+  </tr>
+
+  <tr>
+    <td align="center"><b>T = 3.50</b><br>(Above Tc)</td>
+    <td align="center">
+      <img src="results/animations/metropolis_T3p5.gif" width="320">
+    </td>
+    <td align="center">
+      <img src="results/animations/wolff_T3p5.gif" width="320">
+    </td>
+  </tr>
+</table>
+</p>
 
 ## Author
 Maahir Patel
