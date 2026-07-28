@@ -19,12 +19,12 @@ A C++ implementation of the two-dimensional Ising model using both the Metropoli
 </table>
 
 <p align="center">
-<b>Figure 1.</b> Equilibrium dynamics of a 100 × 100 two-dimensional Ising model at the critical temperature (<i>T</i> = 2.269). Frames are recorded after the equilibration (warmup) phase. The Metropolis-Hastings algorithm (left) performs single-spin updates, resulting in slow domain evolution, while the Wolff algorithm (right) flips correlated spin clusters, rapidly exploring configuration space and mitigating critical slowing down.
+<b>Figure 1.</b> Equilibrium dynamics of a 100 × 100 two-dimensional Ising model at the critical temperature (<i>T</i> = 2.269). Frames are recorded after the equilibration (warmup) phase. The Metropolis-Hastings algorithm (left) performs single-spin updates, resulting in slow domain evolution, while the Wolff cluster algorithm (right) flips correlated spin clusters, rapidly exploring configuration space and mitigating critical slowing down.
 </p>
 
 
 ## Physics Background
-The 2D Ising model is a classic statistical model used to simulate phase transitions and ferromagnetism in magnetic materials. The system consists of a discrete $L \times L$ lattice with a spin variable, $\sigma_k \in \{-1,+1\}$, assigned to each lattice site, $s_k$.
+The 2D Ising model is a classic statistical model used to simulate phase transitions and ferromagnetism in magnetic materials. The system consists of a discrete $L \times L$ lattice with a spin variable, $\sigma_k \in \set{-1,+1}$, assigned to each lattice site, $s_k$.
 
 In the abscence of an external magnetic field, the system's energy is described by the Hamiltonian function:
 
@@ -49,9 +49,9 @@ $$
 
 
 ## Algorithms
-### Metropolis-Hasting:
+### Metropolis-Hastings:
 
-The Metropolis-Hasting algorithm is the most commonly used Monte Carlo algorithm to simulate the Ising model. It utilizes single-spin-flip dynamics to change at most one spin site on the lattice in each transition. The algorithm is implemented as follows:
+The Metropolis-Hastings algorithm is the most commonly used Monte Carlo algorithm to simulate the Ising model. It utilizes single-spin-flip dynamics to change at most one spin site on the lattice in each transition. The algorithm is implemented as follows:
 
 1. Initialize spins on a 2D square lattice in a random configuration.
 2. Randomly select a spin site.
@@ -60,13 +60,13 @@ The Metropolis-Hasting algorithm is the most commonly used Monte Carlo algorithm
 5. Repeat steps 2-4.
 
 <p align="center">
-    <img src="diagrams/Metropolis_diagram.svg" width="400">
+    <img src="diagrams/Metropolis_diagram.svg" width="550">
 </p>
 
 The algorithm does not perform well around the critical point $T_c$ as the spins become highly correlated, resulting in single-spin-flip dynamics becoming extremely slow. This phenomenon is referred to as "Critical Slowing Down".
 
 ### Wolff Cluster:
-To resolve the effect of critical slowing down around the critical point, non-local algorithms, like the Wolff algorithm, are utilized to flip entire clusters of aligned spins. The algorithm is implemented as follows:
+To resolve the effect of critical slowing down around the critical point, non-local algorithms, like the Wolff cluster algorithm, are utilized to flip entire clusters of aligned spins. The algorithm is implemented as follows:
 
 1. Initialize spins on a 2D square lattice in a random configuration.
 2. Randomly select a spin site to become the seed of a new cluster.
@@ -76,7 +76,7 @@ To resolve the effect of critical slowing down around the critical point, non-lo
 6. Repeat steps 2-5.
 
 <p align="center">
-    <img src="diagrams/Wolff_diagram.svg" width="400">
+    <img src="diagrams/Wolff_diagram.svg" width="550">
 </p>
 
 
@@ -98,7 +98,7 @@ To resolve the effect of critical slowing down around the critical point, non-lo
 </p>
 
 <p align="center">
-<b>Figure 3.</b> Specific Heat Capacity (<i>C<sub>v</i>) as a function of temperature for a 100 × 100 two-dimensional Ising lattice simulated using the Metropolis-Hastings and Wolff cluster algorithms. Simulations were performed over the temperature range <i>T</i> = 1.0–4.0 in increments of 0.05. At each temperature, measurements were averaged over 200 Monte Carlo sweeps following an equilibration phase. The Wolff algorithm peaks around the critical point, demonstrating its advantage over the Metropolis algorithm around in that region.
+<b>Figure 3.</b> Specific Heat Capacity (<i>C<sub>v</i>) as a function of temperature for a 100 × 100 two-dimensional Ising lattice simulated using the Metropolis-Hastings and Wolff cluster algorithms. Simulations were performed over the temperature range <i>T</i> = 1.0–4.0 in increments of 0.05. At each temperature, measurements were averaged over 200 Monte Carlo sweeps following an equilibration phase. The Wolff cluster algorithm peaks around the critical point, demonstrating its advantage over the Metropolis algorithm around in that region.
 </p>
 
 ### Energy or Magnetization convergence
