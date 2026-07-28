@@ -1,3 +1,0 @@
-/Users/maahir/Downloads/Coding/CPlusPlus/ising/build/CMakeFiles/Ising2D.dir
-/Users/maahir/Downloads/Coding/CPlusPlus/ising/build/CMakeFiles/edit_cache.dir
-/Users/maahir/Downloads/Coding/CPlusPlus/ising/build/CMakeFiles/rebuild_cache.dir
