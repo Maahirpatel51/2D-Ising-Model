@@ -10,10 +10,10 @@ A C++ implementation of the two-dimensional Ising model using both the Metropoli
   </tr>
   <tr>
     <td align="center">
-      <img src="results/animations/metropolis_T2p269_AfterWarmup.gif" width="550">
+      <img src="results/animations/metropolis_T2p269_AfterWarmup.gif" width="375">
     </td>
     <td align="center">
-      <img src="results/animations/wolff_T2p269_AfterWarmup.gif" width="550">
+      <img src="results/animations/wolff_T2p269_AfterWarmup.gif" width="375">
     </td>
   </tr>
 </table>
