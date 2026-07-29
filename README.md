@@ -101,13 +101,6 @@ To resolve the effect of critical slowing down around the critical point, non-lo
 <b>Figure 3.</b> Specific Heat Capacity (<i>C<sub>v</i>) as a function of temperature for a 100 × 100 two-dimensional Ising lattice simulated using the Metropolis-Hastings and Wolff cluster algorithms. Simulations were performed over the temperature range <i>T</i> = 1.0–4.0 in increments of 0.05. At each temperature, measurements were averaged over 200 Monte Carlo sweeps following an equilibration phase. The Wolff cluster algorithm peaks around the critical point, demonstrating its advantage over the Metropolis algorithm around in that region.
 </p>
 
-### Energy or Magnetization convergence
-
-### Autocorrelation
-
-
-
-
 ## Repository Structure
 - `src/` - C++ implementation
 - `scripts/` - python analysis and visualization scripts
